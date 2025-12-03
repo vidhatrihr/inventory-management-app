@@ -19,7 +19,8 @@ class Product(db.Model):
   __tablename__ = 'products'
   id = Column(Integer, primary_key=True, autoincrement=True)
   name = Column(String)
-  price = Column(Integer)
+  cost_price = Column(Integer)
+  selling_price = Column(Integer)
   quantity = Column(Integer)
 
 
@@ -27,12 +28,13 @@ class Order(db.Model):
   __tablename__ = 'orders'
   id = Column(Integer, primary_key=True, autoincrement=True)
   type = Column(String)
-  product = Column(Integer, ForeignKey('products.id'))
+  product_id = Column(Integer, ForeignKey('products.id'))
   qty = Column(Integer)
+  status = Column(String)  # pending,  delivered
   date_placed = Column(DateTime)
   date_delivered = Column(DateTime)
-  supplier = Column(Integer, ForeignKey('suppliers.id'))
-  client = Column(Integer, ForeignKey('clients.id'))
+  supplier_id = Column(Integer, ForeignKey('suppliers.id'))
+  client_id = Column(Integer, ForeignKey('clients.id'))
 
 
 class Supplier(db.Model):
