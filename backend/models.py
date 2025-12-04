@@ -21,7 +21,7 @@ class Product(db.Model):
   name = Column(String)
   cost_price = Column(Integer)
   selling_price = Column(Integer)
-  quantity = Column(Integer)
+  qty = Column(Integer)
 
 
 class Order(db.Model):

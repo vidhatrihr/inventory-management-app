@@ -11,5 +11,15 @@
       <h1>Welcome to Admin Dashboard</h1>
       <a href="/logout">Logout</a>
     </main>
+
+    <section id="products"></section>
+
+    <script>
+      fetch('/admin/products')
+        .then(response => response.json())
+        .then(data => {
+          document.querySelector('#products').innerText = data;
+        });
+    </script>
   </body>
 </html>
