@@ -11,17 +11,34 @@
       <h1>Admin Dashboard</h1>
 
       <div class="nav-links">
-        <a href="/admin/home" class="active">Home</a>
+        <a href="/admin/home">Home</a>
         <a href="/admin/products">Products</a>
         <a href="/admin/orders">Orders</a>
         <a href="/admin/customers">Customers</a>
-        <a href="/admin/suppliers">Suppliers</a>
+        <a href="/admin/suppliers" class="active">Suppliers</a>
         <a href="/logout">Logout</a>
       </div>
     </nav>
 
     <main>
-      <h2>Summary of the inventory</h2>
+      <section class="suppliers-section">
+        <h2>Suppliers</h2>
+        <table>
+          <thead>
+            <th>Id</th>
+            <th>Name</th>
+          </thead>
+
+          <tbody>
+            {% for supplier in suppliers %}
+            <tr>
+              <td>{{ supplier.id }}</td>
+              <td>{{ supplier.name }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
     </main>
   </body>
 </html>

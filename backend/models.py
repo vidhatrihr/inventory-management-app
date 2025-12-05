@@ -34,7 +34,7 @@ class Order(db.Model):
   date_placed = Column(DateTime)
   date_delivered = Column(DateTime)
   supplier_id = Column(Integer, ForeignKey('suppliers.id'), nullable=True)  # null for outgoing orders
-  client_id = Column(Integer, ForeignKey('clients.id'), nullable=True)  # null for incoming orders
+  customer_id = Column(Integer, ForeignKey('customers.id'), nullable=True)  # null for incoming orders
 
 
 class Supplier(db.Model):
@@ -43,7 +43,7 @@ class Supplier(db.Model):
   name = Column(String)
 
 
-class Client(db.Model):
-  __tablename__ = 'clients'
+class Customer(db.Model):
+  __tablename__ = 'customers'
   id = Column(Integer, primary_key=True, autoincrement=True)
   name = Column(String)

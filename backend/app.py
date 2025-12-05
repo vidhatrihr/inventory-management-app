@@ -2,18 +2,21 @@ from flask import Flask, render_template, redirect
 from models import db, User
 from populate_db import populate_db
 from flask_login import LoginManager, current_user
+from flask_debugtoolbar import DebugToolbarExtension
 
 from routes.auth_bp import auth_bp
 from routes.admin_bp import admin_bp
 from routes.manager_bp import manager_bp
 
-
 app = Flask(__name__)
+app.debug = True
 app.secret_key = '12345'  # for flask login sessions
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(admin_bp)
 app.register_blueprint(manager_bp)
+
+# DebugToolbarExtension(app)
 
 # setup database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
