@@ -27,14 +27,14 @@ class Product(db.Model):
 class Order(db.Model):
   __tablename__ = 'orders'
   id = Column(Integer, primary_key=True, autoincrement=True)
-  type = Column(String)
+  type = Column(String)  # incoming, outgoing
   product_id = Column(Integer, ForeignKey('products.id'))
   qty = Column(Integer)
-  status = Column(String)  # pending,  delivered
+  status = Column(String)  # pending, delivered
   date_placed = Column(DateTime)
   date_delivered = Column(DateTime)
-  supplier_id = Column(Integer, ForeignKey('suppliers.id'))
-  client_id = Column(Integer, ForeignKey('clients.id'))
+  supplier_id = Column(Integer, ForeignKey('suppliers.id'), nullable=True)  # null for outgoing orders
+  client_id = Column(Integer, ForeignKey('clients.id'), nullable=True)  # null for incoming orders
 
 
 class Supplier(db.Model):

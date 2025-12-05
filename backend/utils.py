@@ -4,7 +4,7 @@ from flask import redirect
 
 
 def role_required(role):
-  def wrapper(func):  # func => decorated_func
+  def decorator(func):  # func -> decorated_func
     @wraps(func)
     def decorated_func(*args, **kwargs):
       if current_user.is_authenticated and current_user.role == role:
@@ -12,4 +12,4 @@ def role_required(role):
       else:
         return redirect('/login')
     return decorated_func
-  return wrapper
+  return decorator
